@@ -121,6 +121,14 @@ parser.add_argument('-th', '--tpm-threshold',
                     default=[0.0],
                     help="Minimum transcript average TPM value within-replicates and between-conditions to be included in the analysis. (Default: 1.0).")
 
+parser.add_argument('-t', '--threads',
+                    dest="no_cpu",
+                    action="store",
+                    nargs=1,
+                    type=int,
+                    default=[1],
+                    help="Number of threads/cpus for create_replicates_distribution of empirical test. (Default: 1).")
+
 def nan_threshold_type(x):
     x = float(x)
     if x < 0.0 or x > 1.0:
@@ -191,7 +199,7 @@ def main():
     multiple_conditions_analysis(args.method, cond_files, expr_files, ioe_fl[0], args.area[0],
                                  args.lower_bound[0], args.paired, args.gene_cor, args.alpha[0],
                                  args.save_tpm_events, args.seq, args.median, args.tpm_th[0],
-                                 args.nan_th[0],args.output)
+                                 args.nan_th[0],args.output, args.no_cpu[0])
 
 
 if __name__ == "__main__":
