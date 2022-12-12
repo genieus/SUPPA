@@ -11,9 +11,14 @@
 print("Parsing samples...")
 CHARACTER_command_args <- commandArgs(trailingOnly=TRUE)
 
-#Load the input file
+#Load the input file (RDS or tsv/txt/mat is acceptable)
 print(paste0("Loading ",CHARACTER_command_args[1],"..."))
-input_file <- read.table(CHARACTER_command_args[1],header=TRUE)
+if (endsWith(tolower(CHARACTER_command_args[1]), '.rds')) {
+  input_file <- readRDS(CHARACTER_command_args[1])
+} else {
+  input_file <- read.table(CHARACTER_command_args[1],header=TRUE)
+}
+
 
 #Load the list of samples of the first condition
 #Replace the dashes with dots
