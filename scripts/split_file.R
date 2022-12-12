@@ -11,7 +11,7 @@
 print("Parsing samples...")
 CHARACTER_command_args <- commandArgs(trailingOnly=TRUE)
 
-#Load the input file
+#Load the input file (RDS or tsv/txt/mat is acceptable)
 print(paste0("Loading ",CHARACTER_command_args[1],"..."))
 if (endsWith(tolower(CHARACTER_command_args[1]), '.rds')) {
   input_file <- readRDS(CHARACTER_command_args[1])
