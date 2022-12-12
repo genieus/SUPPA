@@ -246,10 +246,8 @@ def get_closest_number(lst, n):
     before = lst[pos - 1]
     after = lst[pos]
     if after - n < n - before:
-        # return after
         return pos
     else:
-        # return before
         return pos - 1
 
 
@@ -276,7 +274,6 @@ def slice_list(lst, index, slice_len):
 
     try:
         local_dpsi = lst[int(left_bound):int(right_bound)]
-#         local_dpsi = lst[left_bound:right_bound]
     except Exception as e:
         print(e)
         raise
@@ -286,7 +283,6 @@ def slice_list(lst, index, slice_len):
 
 def calculate_empirical_pvalue(local_area, dpsi_abs_value):
 
-    # abs_local_area = [abs(val) for val in local_area]
     abs_local_area = np.abs(local_area)
 
     ecdf = ECDF(abs_local_area)
@@ -396,7 +392,6 @@ def create_replicates_distribution(between_conditions_distribution, psi_dict, tp
     # It's important to sort because get_closest_number assume a sorted list
     replicates_distribution = unsorted_replicates_distribution[unsorted_replicates_distribution[:,1].argsort()]
         
-    # replicates_distribution = unsorted_replicates_distribution[pargsort.pargsort(unsorted_replicates_distribution[:,1])]
     return replicates_distribution
 
 
